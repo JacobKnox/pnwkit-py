@@ -181,10 +181,15 @@ class Nation(Data):
         "tax_id": int,
         "last_active": datetime.datetime.fromisoformat,
         "date": datetime.datetime.fromisoformat,
+        "discord_id": int,
     }
 
     #: ID of the nation
     id: int
+    #: Discord ID number of the user (if provided)
+    discord_id: Optional[int]
+    #: Whether or not the nation has VIP
+    vip: bool
     #: ID of the alliance the nation is currently in (returns 0 if None)
     alliance_id: int
     #: Enumeration representing the position of the nation in their alliance ("NOALLIANCE", "APPLICANT", "MEMBER", "OFFICER", "HEIR", or "LEADER")
@@ -263,6 +268,14 @@ class Nation(Data):
     wars: List[Bankrec]
     #: List of the nation's tax records within the last 14 days. This field will return null unless you are an officer or higher in the same alliance as this nation, and this nation allows alliance bank access or you are this nation
     taxrecs: Optional[List[Bankrec]]
+    #: List of the nation's sent bank records within the last 14 days [deprecated]
+    sent_bankrecs: List[Bankrec]
+    #: List of the nation's received bank records within the last 14 days [deprecated]
+    received_bankrecs: List[Bankrec]
+    #: List of all the nation's bank records within the past 14 days
+    bankrecs: List[Bankrec]
+    #: List of the nation's trade offers within the past 14 days
+    trades: List[Trade]
     #: List of bounties currently on the nation
     bounties: List[Bounty]
     #: Number of turns since the nation has last purchased a city
